@@ -13,14 +13,17 @@
             0% {
                 background-color: #B20000;
                 box-shadow: 0 0 3px #B20000;
+                color: white;
             }
             50% {
                 background-color: #FF0000;
                 box-shadow: 0 0 40px #FF0000;
+                color: white;
             }
             100% {
                 background-color: #B20000;
                 box-shadow: 0 0 3px #B20000;
+                color: white;
             }
         }
 

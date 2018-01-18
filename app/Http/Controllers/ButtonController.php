@@ -15,14 +15,14 @@ class ButtonController extends Controller
     public function index()
     {
 
-        $x = Button::all();
+        $x = Button::where('status',1)->pluck('button_id');
 //$x = Button::select('button_id');
         return response()->json($x, 200);
     }
 
     public function getIds()
     {
-        $x = [12, 10, 20, 59];
+        $x = Button::pluck('button_id');
         return response()->json($x, 200);
 
     }
