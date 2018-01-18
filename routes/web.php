@@ -18,11 +18,11 @@ Route::get('/', function () {
 
 Route::get('triggered-buttons', 'ButtonController@index');
 
-Route::name('buttonsPressed')->post('button/{id}', function($id){
+Route::any('button/{id}', function($id){
     $button = new \App\Button();
     $button->button_id = $id;
     $button->status = 1;
     $button->save();
-
     return $button;
+
 });
