@@ -16,9 +16,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('triggered-buttons', 'ButtonController@index');
+Route::get('triggered-buttons', 'ButtonController@getIds');
 
-Route::get('buttons', )
+Route::get('buttons', 'ButtonsController@index');
 
 Route::any('button/{id}', function($id){
     $button = new \App\Button();

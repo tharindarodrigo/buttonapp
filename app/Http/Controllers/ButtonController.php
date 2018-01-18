@@ -20,6 +20,13 @@ class ButtonController extends Controller
         return response()->json($x, 200);
     }
 
+    public function getIds()
+    {
+        $x = [12, 10, 20, 59];
+        return response()->json($x, 200);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
