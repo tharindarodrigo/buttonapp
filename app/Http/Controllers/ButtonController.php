@@ -15,9 +15,7 @@ class ButtonController extends Controller
     public function index()
     {
 
-        $x = [
-            1, 21, 53, 21, 89, 37
-        ];
+        $x = Button::all();
 //$x = Button::select('button_id');
         return response()->json($x, 200);
     }

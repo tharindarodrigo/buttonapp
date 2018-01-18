@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::get('triggered-buttons', 'ButtonController@index');
 
+Route::get('buttons', )
+
 Route::any('button/{id}', function($id){
     $button = new \App\Button();
     $button->button_id = $id;
