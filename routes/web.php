@@ -20,7 +20,7 @@ Route::get('triggered-buttons', 'ButtonController@getIds');
 
 Route::get('buttons', 'ButtonController@index');
 
-Route::get('button/{id}', function($id){
+Route::name('buttonsPressed')->any('button/{id}', function($id){
     $button = new \App\Button();
     $button->button_id = $id;
     $button->status = 1;
