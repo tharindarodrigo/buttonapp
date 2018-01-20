@@ -93,7 +93,7 @@
     channel.bind('ButtonPressEvent', function(data) {
         var ids = data.id;
         $('.glow').addClass('btn-outline-dark').removeClass('glow');
-        $('#'.ids).removeClass('btn-outline-dark').addClass('glow');
+        $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
 
 //        alert(data.id);
     });
