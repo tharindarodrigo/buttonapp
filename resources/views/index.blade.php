@@ -91,7 +91,7 @@
 
     var channel = pusher.subscribe('buttonPressChannel');
     channel.bind('ButtonPressEvent', function(data) {
-        alert(data.message);
+        alert(data.id);
     });
 </script>
 <script type="text/javascript">
