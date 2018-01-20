@@ -24,7 +24,7 @@ class ButtonPressEvent implements ShouldBroadcast
      */
     public function __construct(Button $button)
     {
-        $this->button = $button->all();
+        $this->button = $button;
     }
 
     /**
