@@ -63,6 +63,9 @@
     {{--((.row>.col-md*10>.btn.btn-outline-dark.btn-block{$})+br)*10--}}
 </div>
 
+<div id="app">
+    Event Triggers
+</div>
 
 <script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
