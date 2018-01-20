@@ -78,39 +78,39 @@
         crossorigin="anonymous"></script>
 <script src="{!! asset('js/app.js') !!}"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        setInterval('illuminateButtons()', 1000);
-    });
-
-    function illuminateButtons() {
-        $.get({
-            url: 'http://' + window.location.host + '/triggered-buttons',
-            success: function (data) {
-                var ids = getIDs(data);
-//                if ($('.btn').hasClass('glow')) {
-
-                    $('.glow').addClass('btn-outline-dark').removeClass('glow');
-//                    $('btn').addClass('btn-outline-dark');
-
-//                }?
-
-                $(ids).removeClass('btn-outline-dark');
-                $(ids).addClass('glow');
-
-            }
-        });
-
-    }
-
-    function getIDs(buttons) {
-
-        var glow = '#' + buttons.toString();
-        var find = ',';
-        var re = new RegExp(find, 'g');
-
-        str = glow.replace(re, ', #');
-        return str;
-    }
+//    $(document).ready(function () {
+//        setInterval('illuminateButtons()', 1000);
+//    });
+//
+//    function illuminateButtons() {
+//        $.get({
+//            url: 'http://' + window.location.host + '/triggered-buttons',
+//            success: function (data) {
+//                var ids = getIDs(data);
+////                if ($('.btn').hasClass('glow')) {
+//
+//                    $('.glow').addClass('btn-outline-dark').removeClass('glow');
+////                    $('btn').addClass('btn-outline-dark');
+//
+////                }?
+//
+//                $(ids).removeClass('btn-outline-dark');
+//                $(ids).addClass('glow');
+//
+//            }
+//        });
+//
+//    }
+//
+//    function getIDs(buttons) {
+//
+//        var glow = '#' + buttons.toString();
+//        var find = ',';
+//        var re = new RegExp(find, 'g');
+//
+//        str = glow.replace(re, ', #');
+//        return str;
+//    }
 </script>
 </body>
 </html>
