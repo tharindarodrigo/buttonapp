@@ -24,7 +24,7 @@ class ButtonPressEvent implements ShouldBroadcast
      */
     public function __construct(Button $button)
     {
-        $this->button = $button;
+        $this->button = $button->all();
     }
 
     /**
@@ -40,7 +40,7 @@ class ButtonPressEvent implements ShouldBroadcast
     public function broadcastWith()
     {
         return [
-            'button'=> $this->button->button_id
+            'button'=> $this->button
         ];
     }
 }
