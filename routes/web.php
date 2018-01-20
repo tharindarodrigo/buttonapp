@@ -21,13 +21,15 @@ Route::get('triggered-buttons', 'ButtonController@getIds');
 Route::get('buttons', 'ButtonController@index');
 
 Route::name('buttonsPressed')->any('button/{id}', function($id){
-    $button = new \App\Button();
-    $button->button_id = $id;
-    $button->status = 1;
-    if ($button->save()) {
-        event(new \App\Events\ButtonPressEvent());
-    }
-    return $button;
+
+    event(new \App\Events\ButtonPressEvent());
+
+//    $button = new \App\Button();
+//    $button->button_id = $id;
+//    $button->status = 1;
+//    if ($button->save()) {
+//    }
+//    return $button;
 
 });
 
