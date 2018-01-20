@@ -35,22 +35,7 @@
             animation: glowing 1500ms infinite;
         }
     </style>
-    <script src="{!! asset('https://js.pusher.com/4.1/pusher.min.js') !!}"></script>
-    <script>
 
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-
-        var pusher = new Pusher('2f207b6d6270b9d99a3b', {
-            cluster: 'ap2',
-            encrypted: true
-        });
-
-        var channel = pusher.subscribe('buttonPressChannel');
-        channel.bind('ButtonPressEvent', function(data) {
-            alert(data.message);
-        });
-    </script>
 </head>
 <body>
 
@@ -93,6 +78,22 @@
 <script src="{!! asset('//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js') !!}"
         integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
         crossorigin="anonymous"></script>
+<script src="{!! asset('https://js.pusher.com/4.1/pusher.min.js') !!}"></script>
+<script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('2f207b6d6270b9d99a3b', {
+        cluster: 'ap2',
+        encrypted: true
+    });
+
+    var channel = pusher.subscribe('buttonPressChannel');
+    channel.bind('ButtonPressEvent', function(data) {
+        alert(data.message);
+    });
+</script>
 <script type="text/javascript">
 //    $(document).ready(function () {
 //        setInterval('illuminateButtons()', 1000);
