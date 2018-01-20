@@ -83,7 +83,7 @@
     Event Triggers
 </div>
 
-<script src="{!! asset('js/app.js') !!}" charset="utf-8"></script>
+{{--<script src="{!! asset('js/app.js') !!}" charset="utf-8"></script>--}}
 <script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
