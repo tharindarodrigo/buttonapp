@@ -14,14 +14,16 @@ class ButtonPressEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $button;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Button $button)
     {
-        //
+        $this->button = $button;
     }
 
     /**
@@ -32,5 +34,12 @@ class ButtonPressEvent implements ShouldBroadcast
     public function broadcastOn()
     {
         return new Channel('buttonPressChannel');
+    }
+
+    public function broadcastWith()
+    {
+        return [
+            'button'=> $this->button->button_id
+        ];
     }
 }
