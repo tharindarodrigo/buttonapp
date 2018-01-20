@@ -35,33 +35,49 @@
             animation: glowing 1500ms infinite;
         }
     </style>
+    <script src="{!! asset('https://js.pusher.com/4.1/pusher.min.js') !!}"></script>
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('2f207b6d6270b9d99a3b', {
+            cluster: 'ap2',
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('buttonPressChannel');
+        channel.bind('ButtonPressEvent', function(data) {
+            alert(data.message);
+        });
+    </script>
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Button Triggers</h1>
-        </div>
-    </div>
-    <br>
+{{--<div class="container">--}}
+    {{--<div class="row">--}}
+        {{--<div class="col-md-12">--}}
+            {{--<h1>Button Triggers</h1>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<br>--}}
 
-    @for($i=0; $i<10; $i++)
-        <div class="row">
-            @for($j=1; $j<=10; $j++)
-                <div class="col-md">
-                    <div class="btn btn-lg btn-block {!! ($i*10+$j) % 3===5 ? 'btn-danger': 'btn-outline-dark' !!}"
-                         id="{!! ($i*10+$j) !!}">{!! $i*10+$j !!}</div>
-                </div>
-            @endfor
-        </div>
-        @if($i<9)
-            <br>
-        @endif
-    @endfor
+    {{--@for($i=0; $i<10; $i++)--}}
+        {{--<div class="row">--}}
+            {{--@for($j=1; $j<=10; $j++)--}}
+                {{--<div class="col-md">--}}
+                    {{--<div class="btn btn-lg btn-block {!! ($i*10+$j) % 3===5 ? 'btn-danger': 'btn-outline-dark' !!}"--}}
+                         {{--id="{!! ($i*10+$j) !!}">{!! $i*10+$j !!}</div>--}}
+                {{--</div>--}}
+            {{--@endfor--}}
+        {{--</div>--}}
+        {{--@if($i<9)--}}
+            {{--<br>--}}
+        {{--@endif--}}
+    {{--@endfor--}}
 
     {{--((.row>.col-md*10>.btn.btn-outline-dark.btn-block{$})+br)*10--}}
-</div>
+{{--</div>--}}
 
 <div id="app">
     Event Triggers
