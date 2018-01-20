@@ -67,6 +67,7 @@
     Event Triggers
 </div>
 
+<script src="{!! asset('js/app.js') !!}"></script>
 <script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous"></script>
@@ -76,7 +77,6 @@
 <script src="{!! asset('//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js') !!}"
         integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
         crossorigin="anonymous"></script>
-<script src="{!! asset('js/app.js') !!}"></script>
 <script type="text/javascript">
 //    $(document).ready(function () {
 //        setInterval('illuminateButtons()', 1000);
