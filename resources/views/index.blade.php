@@ -91,7 +91,7 @@
 
     var channel = pusher.subscribe('buttonPressChannel');
     channel.bind('ButtonPressEvent', function(data) {
-        var ids = data.id;
+        var ids = data.button.button_id;
         $('.glow').addClass('btn-outline-dark').removeClass('glow');
         $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
 
