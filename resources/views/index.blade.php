@@ -86,7 +86,7 @@
 //        $('.glow').addClass('btn-outline-dark').removeClass('glow');
 //        $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
 
-        alert(data.id);
+        alert(ids);
     });
 </script>
 <script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
