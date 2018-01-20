@@ -11,6 +11,8 @@
 |
 */
 
+use \App\Events\ButtonPressEvent;
+
 Route::get('/', function () {
     //return view('welcome');
     return view('index');
@@ -27,7 +29,7 @@ Route::name('buttonsPressed')->any('button/{id}', function ($id) {
     $button->button_id = $id;
     $button->status = 1;
     if ($button->save()) {
-        event(new \App\Events\ButtonPressEvent($button));
+        event(new ButtonPressEvent($button));
     }
     //return $button;
 

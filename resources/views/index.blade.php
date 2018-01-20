@@ -73,20 +73,20 @@
 <script>
 
     // Enable pusher logging - don't include this in production
-    //Pusher.logToConsole = true;
+    Pusher.logToConsole = true;
 
     var pusher = new Pusher('2f207b6d6270b9d99a3b', {
         cluster: 'ap2',
         encrypted: true
     });
-
     var channel = pusher.subscribe('buttonPressChannel');
-    channel.bind('ButtonPressEvent', function(data) {
-        var ids = data.button.button_id;
-//        $('.glow').addClass('btn-outline-dark').removeClass('glow');
-//        $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
 
-        alert(ids);
+    channel.bind('App\\Events\\ButtonPressEvent', function(data) {
+        var ids = data.button.button_id;
+        $('.glow').addClass('btn-outline-dark').removeClass('glow');
+        $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
+
+//        alert(ids);
     });
 </script>
 <script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
