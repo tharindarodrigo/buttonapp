@@ -64,9 +64,9 @@
     {{--((.row>.col-md*10>.btn.btn-outline-dark.btn-block{$})+br)*10--}}
 </div>
 
-<div id="app">
-    Event Triggers
-</div>
+{{--<div id="app">--}}
+    {{--Event Triggers--}}
+{{--</div>--}}
 
 {{--<script src="{!! asset('js/app.js') !!}" charset="utf-8"></script>--}}
 <script src="{!! asset('https://js.pusher.com/4.1/pusher.min.js') !!}"></script>
@@ -81,7 +81,7 @@
     });
     var channel = pusher.subscribe('buttonPressChannel');
 
-    channel.bind('App\\Events\\ButtonPressEvent', function(data) {
+    channel.bind('App\\Events\\ButtonPressEvent', function (data) {
         var ids = data.button.button_id;
         $('.glow').addClass('btn-outline-dark').removeClass('glow');
         $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
