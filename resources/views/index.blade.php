@@ -69,20 +69,11 @@
 </div>
 
 {{--<script src="{!! asset('js/app.js') !!}" charset="utf-8"></script>--}}
-<script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-<script src="{!! asset('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') !!}"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="{!! asset('//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js') !!}"
-        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-        crossorigin="anonymous"></script>
 <script src="{!! asset('https://js.pusher.com/4.1/pusher.min.js') !!}"></script>
 <script>
 
     // Enable pusher logging - don't include this in production
-    Pusher.logToConsole = true;
+    //Pusher.logToConsole = true;
 
     var pusher = new Pusher('2f207b6d6270b9d99a3b', {
         cluster: 'ap2',
@@ -92,33 +83,43 @@
     var channel = pusher.subscribe('buttonPressChannel');
     channel.bind('ButtonPressEvent', function(data) {
         var ids = data.button.button_id;
-        $('.glow').addClass('btn-outline-dark').removeClass('glow');
-        $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
+//        $('.glow').addClass('btn-outline-dark').removeClass('glow');
+//        $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
 
-//        alert(data.id);
+        alert(data.id);
     });
 </script>
+<script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="{!! asset('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') !!}"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="{!! asset('//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js') !!}"
+        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
+
 <script type="text/javascript">
 //    $(document).ready(function () {
 //        setInterval('illuminateButtons()', 1000);
 //    });
 //
-    function illuminateButtons() {
-        $.get({
-            url: 'http://' + window.location.host + '/triggered-buttons',
-            success: function (data) {
-                var ids = getIDs(data);
-                    $('.glow').addClass('btn-outline-dark').removeClass('glow');
-
-
-                $(ids).removeClass('btn-outline-dark');
-                $(ids).addClass('glow');
-
-            }
-        });
-
-    }
+//    function illuminateButtons() {
+//        $.get({
+//            url: 'http://' + window.location.host + '/triggered-buttons',
+//            success: function (data) {
+//                var ids = getIDs(data);
+//                    $('.glow').addClass('btn-outline-dark').removeClass('glow');
 //
+//
+//                $(ids).removeClass('btn-outline-dark');
+//                $(ids).addClass('glow');
+//
+//            }
+//        });
+//
+//    }
+////
 //    function getIDs(buttons) {
 //
 //        var glow = '#' + buttons.toString();
