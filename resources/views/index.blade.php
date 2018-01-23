@@ -83,14 +83,13 @@
     });
     var channel = pusher.subscribe('buttonPressChannel');
 
-    if (buttonIDs == null || buttonIDs.length > 0) {
-        var buttonIDs = [];
-    }
 
+        var buttonIDs = [];
 
 
         channel.bind('App\\Events\\ButtonPressEvent', function (data) {
             buttonIDs.push(data.button.button_id);
+            alert(buttonIDs.toString());
 //            var ids = data.button.button_id;
             $('.glow').addClass('btn-outline-dark').removeClass('glow');
             $(buttonIDs).removeClass('btn-outline-dark').addClass('glow');
