@@ -73,6 +73,8 @@
 <script>
 
     // Enable pusher logging - don't include this in production
+
+
     Pusher.logToConsole = true;
 
     var pusher = new Pusher('2f207b6d6270b9d99a3b', {
@@ -81,7 +83,9 @@
     });
     var channel = pusher.subscribe('buttonPressChannel');
 
+    var buttonIDs = [1,2,3];
     channel.bind('App\\Events\\ButtonPressEvent', function (data) {
+        alert(buttonIDs[0]);
         var ids = data.button.button_id;
         $('.glow').addClass('btn-outline-dark').removeClass('glow');
         $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
