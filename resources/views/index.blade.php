@@ -51,8 +51,8 @@
         <div class="row">
             @for($j=1; $j<=10; $j++)
                 <div class="col-md">
-                    <div class="btn btn-lg btn-block {!! ($i*10+$j) % 3===5 ? 'btn-danger': 'btn-outline-dark' !!}"
-                         id="{!! ($i*10+$j) !!}">{!! $i*10+$j !!}</div>
+                    <button class="btn btn-lg btn-block {!! ($i*10+$j) % 3===5 ? 'btn-danger': 'btn-outline-dark' !!}"
+                         id="{!! ($i*10+$j) !!}">{!! $i*10+$j !!}</button>
                 </div>
             @endfor
         </div>
@@ -75,27 +75,29 @@
     // Enable pusher logging - don't include this in production
 
 
-    Pusher.logToConsole = true;
+//    Pusher.logToConsole = true;
+//
+//    var pusher = new Pusher('2f207b6d6270b9d99a3b', {
+//        cluster: 'ap2',
+//        encrypted: true
+//    });
+//    var channel = pusher.subscribe('buttonPressChannel');
+//
+//
+//        var buttonIDs = [];
+//
+//
+//        channel.bind('App\\Events\\ButtonPressEvent', function (data) {
+//            buttonIDs.push(data.button.button_id);
+//            var buttons = getIDs(buttonIDs);
+////            var ids = data.button.button_id;
+//            $('.glow').addClass('btn-outline-dark').removeClass('glow');
+//            $(buttons).removeClass('btn-outline-dark').addClass('glow');
+//
+////        alert(ids);
+//        });
 
-    var pusher = new Pusher('2f207b6d6270b9d99a3b', {
-        cluster: 'ap2',
-        encrypted: true
-    });
-    var channel = pusher.subscribe('buttonPressChannel');
 
-
-        var buttonIDs = [];
-
-
-        channel.bind('App\\Events\\ButtonPressEvent', function (data) {
-            buttonIDs.push(data.button.button_id);
-            var buttons = getIDs(buttonIDs);
-//            var ids = data.button.button_id;
-            $('.glow').addClass('btn-outline-dark').removeClass('glow');
-            $(buttons).removeClass('btn-outline-dark').addClass('glow');
-
-//        alert(ids);
-        });
 </script>
 <script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -128,6 +130,40 @@
     //
     //    }
     ////
+
+
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('2f207b6d6270b9d99a3b', {
+        cluster: 'ap2',
+        encrypted: true
+    });
+    var channel = pusher.subscribe('buttonPressChannel');
+
+
+    var buttonIDs = [];
+
+
+    channel.bind('App\\Events\\ButtonPressEvent', function (data) {
+        buttonIDs.push(data.button.button_id);
+        var buttons = getIDs(buttonIDs);
+//            var ids = data.button.button_id;
+        $('.glow').addClass('btn-outline-dark').removeClass('glow');
+        $(buttons).removeClass('btn-outline-dark').addClass('glow');
+
+//        alert(ids);
+    });
+
+    $('button').click(function () {
+//        alert('asdasd');
+
+        var index = buttonIDs.indexOf($(this).attr('id'));
+        if (index > -1) {
+            buttonIDs.splice(index);
+        }
+        $(this).addClass('btn-outline-dark').removeClass('glow');
+
+    });
         function getIDs(buttons) {
 
             var glow = '#' + buttons.toString();
