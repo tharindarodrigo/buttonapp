@@ -65,7 +65,7 @@
 </div>
 
 {{--<div id="app">--}}
-    {{--Event Triggers--}}
+{{--Event Triggers--}}
 {{--</div>--}}
 
 {{--<script src="{!! asset('js/app.js') !!}" charset="utf-8"></script>--}}
@@ -83,15 +83,20 @@
     });
     var channel = pusher.subscribe('buttonPressChannel');
 
-    var buttonIDs = [1,2,3];
-    channel.bind('App\\Events\\ButtonPressEvent', function (data) {
-        alert(buttonIDs[0]);
-        var ids = data.button.button_id;
-        $('.glow').addClass('btn-outline-dark').removeClass('glow');
-        $('#'+ids).removeClass('btn-outline-dark').addClass('glow');
+    if (buttonIDs == null || buttonIDs.length > 0) {
+        var buttonIDs = [];
+    }
+
+
+
+        channel.bind('App\\Events\\ButtonPressEvent', function (data) {
+            buttonIDs.push(data.button.button_id);
+//            var ids = data.button.button_id;
+            $('.glow').addClass('btn-outline-dark').removeClass('glow');
+            $(buttonIDs).removeClass('btn-outline-dark').addClass('glow');
 
 //        alert(ids);
-    });
+        });
 </script>
 <script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -104,35 +109,35 @@
         crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-//    $(document).ready(function () {
-//        setInterval('illuminateButtons()', 1000);
-//    });
-//
-//    function illuminateButtons() {
-//        $.get({
-//            url: 'http://' + window.location.host + '/triggered-buttons',
-//            success: function (data) {
-//                var ids = getIDs(data);
-//                    $('.glow').addClass('btn-outline-dark').removeClass('glow');
-//
-//
-//                $(ids).removeClass('btn-outline-dark');
-//                $(ids).addClass('glow');
-//
-//            }
-//        });
-//
-//    }
-////
-//    function getIDs(buttons) {
-//
-//        var glow = '#' + buttons.toString();
-//        var find = ',';
-//        var re = new RegExp(find, 'g');
-//
-//        str = glow.replace(re, ', #');
-//        return str;
-//    }
+    //    $(document).ready(function () {
+    //        setInterval('illuminateButtons()', 1000);
+    //    });
+    //
+    //    function illuminateButtons() {
+    //        $.get({
+    //            url: 'http://' + window.location.host + '/triggered-buttons',
+    //            success: function (data) {
+    //                var ids = getIDs(data);
+    //                    $('.glow').addClass('btn-outline-dark').removeClass('glow');
+    //
+    //
+    //                $(ids).removeClass('btn-outline-dark');
+    //                $(ids).addClass('glow');
+    //
+    //            }
+    //        });
+    //
+    //    }
+    ////
+        function getIDs(buttons) {
+
+            var glow = '#' + buttons.toString();
+            var find = ',';
+            var re = new RegExp(find, 'g');
+
+            str = glow.replace(re, ', #');
+            return str;
+        }
 </script>
 </body>
 </html>
