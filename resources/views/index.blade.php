@@ -89,7 +89,7 @@
 
         channel.bind('App\\Events\\ButtonPressEvent', function (data) {
             buttonIDs.push(data.button.button_id);
-            alert(buttonIDs.toString());
+            alert(getIDs(buttonIDs));
 //            var ids = data.button.button_id;
             $('.glow').addClass('btn-outline-dark').removeClass('glow');
             $(buttonIDs).removeClass('btn-outline-dark').addClass('glow');
