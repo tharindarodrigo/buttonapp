@@ -33,7 +33,7 @@ Route::name('buttonsPressed')->any('button/{id}', function ($id) {
     }
     //return $button;
 
-});
+})->where('id', '[0-9]+');
 
 Route::get('fbp', function () {
 //    event(new \App\Events\ButtonPressEvent());

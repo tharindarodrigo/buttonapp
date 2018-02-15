@@ -6,9 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <title>Document</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{!! asset('css/mdb.min.css') !!}" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
     <style type="text/css">
         @keyframes glowing {
             0% {
@@ -51,8 +55,8 @@
         <div class="row">
             @for($j=1; $j<=10; $j++)
                 <div class="col-md">
-                    <button class="btn btn-lg btn-block {!! ($i*10+$j) % 3===5 ? 'btn-danger': 'btn-outline-dark' !!}"
-                         id="{!! ($i*10+$j) !!}">{!! $i*10+$j !!}</button>
+                    <button class="btn btn-outline-primary"
+                            id="{!! ($i*10+$j) !!}">{!! $i*10+$j !!}</button>
                 </div>
             @endfor
         </div>
@@ -60,6 +64,13 @@
             <br>
         @endif
     @endfor
+    <div class="row">
+
+        <div class="col-md-2" id="times">
+
+        </div>
+    </div>
+
 
     {{--((.row>.col-md*10>.btn.btn-outline-dark.btn-block{$})+br)*10--}}
 </div>
@@ -70,67 +81,12 @@
 
 {{--<script src="{!! asset('js/app.js') !!}" charset="utf-8"></script>--}}
 <script src="{!! asset('https://js.pusher.com/4.1/pusher.min.js') !!}"></script>
-<script>
 
-    // Enable pusher logging - don't include this in production
-
-
-//    Pusher.logToConsole = true;
-//
-//    var pusher = new Pusher('2f207b6d6270b9d99a3b', {
-//        cluster: 'ap2',
-//        encrypted: true
-//    });
-//    var channel = pusher.subscribe('buttonPressChannel');
-//
-//
-//        var buttonIDs = [];
-//
-//
-//        channel.bind('App\\Events\\ButtonPressEvent', function (data) {
-//            buttonIDs.push(data.button.button_id);
-//            var buttons = getIDs(buttonIDs);
-////            var ids = data.button.button_id;
-//            $('.glow').addClass('btn-outline-dark').removeClass('glow');
-//            $(buttons).removeClass('btn-outline-dark').addClass('glow');
-//
-////        alert(ids);
-//        });
-
-
-</script>
-<script src="{!! asset('https://code.jquery.com/jquery-3.2.1.min.js') !!}"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-<script src="{!! asset('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') !!}"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="{!! asset('//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js') !!}"
-        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-        crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="{!! asset('js/jquery-3.2.1.min.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/popper.min.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/bootstrap.min.js') !!}"></script>
+<script type="text/javascript" src="{!! asset('js/mdb.min.js') !!}"></script>
 <script type="text/javascript">
-    //    $(document).ready(function () {
-    //        setInterval('illuminateButtons()', 1000);
-    //    });
-    //
-    //    function illuminateButtons() {
-    //        $.get({
-    //            url: 'http://' + window.location.host + '/triggered-buttons',
-    //            success: function (data) {
-    //                var ids = getIDs(data);
-    //                    $('.glow').addClass('btn-outline-dark').removeClass('glow');
-    //
-    //
-    //                $(ids).removeClass('btn-outline-dark');
-    //                $(ids).addClass('glow');
-    //
-    //            }
-    //        });
-    //
-    //    }
-    ////
-
 
     Pusher.logToConsole = true;
 
@@ -147,15 +103,17 @@
     channel.bind('App\\Events\\ButtonPressEvent', function (data) {
         buttonIDs.push(data.button.button_id);
         var buttons = getIDs(buttonIDs);
+        //add(data.button.button_id);
+        //        var tt = timer();
+//        var newButton = '<button id="btn'+data.button.button_id+'">'+data.button.button_id+' '+timer()+'</button>';
+//        $('#times').append(newButton);
 //            var ids = data.button.button_id;
         $('.glow').addClass('btn-outline-dark').removeClass('glow');
         $(buttons).removeClass('btn-outline-dark').addClass('glow');
 
-//        alert(ids);
     });
 
     $('button').click(function () {
-//        alert('asdasd');
 
         var index = buttonIDs.indexOf($(this).attr('id'));
         if (index > -1) {
@@ -164,15 +122,47 @@
         $(this).addClass('btn-outline-dark').removeClass('glow');
 
     });
-        function getIDs(buttons) {
 
-            var glow = '#' + buttons.toString();
-            var find = ',';
-            var re = new RegExp(find, 'g');
+    function getIDs(buttons) {
 
-            str = glow.replace(re, ', #');
-            return str;
+        var glow = '#' + buttons.toString();
+        var find = ',';
+        var re = new RegExp(find, 'g');
+
+        str = glow.replace(re, ', #');
+        return str;
+    }
+
+
+    var seconds = 0, minutes = 0, hours = 0, timeArray = [],
+        t;
+
+    function add(btnID) {
+        seconds++;
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes >= 60) {
+                minutes = 0;
+                hours++;
+            }
         }
+
+        if ($('#btn' + btnID).length > 0) {
+            var textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+            $('#btn' + btnID).html(btnID + ': ' + textContent);
+        } else {
+            var textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+            $('#times').append('<button id="btn' + btnID + '" class="btn btn-primary">' + textContent + '</button>');
+        }
+
+        timer();
+    }
+
+    function timer() {
+        t = setTimeout(add, 1000);
+    }
+
 </script>
 </body>
 </html>
