@@ -10,7 +10,7 @@
     <!-- Bootstrap core CSS -->
     <link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="{!! asset('css/mdb.min.css') !!}" rel="stylesheet">
+    {{--<link href="{!! asset('css/mdb.min.css') !!}" rel="stylesheet">--}}
     <!-- Your custom styles (optional) -->
     <link href="{!! asset('css/style.css') !!}" rel="stylesheet">
     <style type="text/css">
