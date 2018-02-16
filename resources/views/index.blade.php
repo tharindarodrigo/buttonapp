@@ -8,12 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Document</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Bootstrap core CSS -->
-    {{--<link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">--}}
-    <!-- Material Design Bootstrap -->
-    {{--<link href="{!! asset('css/mdb.min.css') !!}" rel="stylesheet">--}}
-    <!-- Your custom styles (optional) -->
+{{--<link href="{!! asset('css/bootstrap.min.css') !!}" rel="stylesheet">--}}
+<!-- Material Design Bootstrap -->
+{{--<link href="{!! asset('css/mdb.min.css') !!}" rel="stylesheet">--}}
+<!-- Your custom styles (optional) -->
     {{--<link href="{!! asset('css/style.css') !!}" rel="stylesheet">--}}
     <style type="text/css">
         @keyframes glowing {
@@ -57,7 +58,7 @@
         <div class="row">
             @for($j=1; $j<=10; $j++)
                 <div class="col-md">
-                    <button class="btn btn-outline-primary"
+                    <button class="btn btn-sm btn-block btn-outline-dark"
                             id="{!! ($i*10+$j) !!}">{!! $i*10+$j !!}</button>
                 </div>
             @endfor
@@ -84,24 +85,31 @@
 {{--<script src="{!! asset('js/app.js') !!}" charset="utf-8"></script>--}}
 <script src="{!! asset('https://js.pusher.com/4.1/pusher.min.js') !!}"></script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 <script type="text/javascript">
 
     Pusher.logToConsole = true;
-
     var pusher = new Pusher('2f207b6d6270b9d99a3b', {
         cluster: 'ap2',
         encrypted: true
     });
     var channel = pusher.subscribe('buttonPressChannel');
+//    alert('asdasd');
 
 
     var buttonIDs = [];
 
 
     channel.bind('App\\Events\\ButtonPressEvent', function (data) {
+        alert('asdasd');
         buttonIDs.push(data.button.button_id);
         var buttons = getIDs(buttonIDs);
         //add(data.button.button_id);
