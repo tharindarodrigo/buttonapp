@@ -58,7 +58,7 @@
         <div class="row">
             @for($j=1; $j<=10; $j++)
                 <div class="col-md">
-                    <button class="btn btn-sm btn-block btn-outline-dark"
+                    <button class="btn btn-sm btn-block btn-outline-dark glow"
                             id="{!! ($i*10+$j) !!}">{!! $i*10+$j !!}</button>
                 </div>
             @endfor
