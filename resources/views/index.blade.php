@@ -58,7 +58,7 @@
         <div class="row">
             @for($j=1; $j<=10; $j++)
                 <div class="col-md">
-                    <button class="btn btn-sm btn-block btn-outline-dark glow"
+                    <button class="btn btn-sm btn-block btn-outline-dark"
                             id="{!! ($i*10+$j) !!}">{!! $i*10+$j !!}</button>
                 </div>
             @endfor
@@ -74,13 +74,8 @@
         </div>
     </div>
 
-
-    {{--((.row>.col-md*10>.btn.btn-outline-dark.btn-block{$})+br)*10--}}
 </div>
 
-{{--<div id="app">--}}
-{{--Event Triggers--}}
-{{--</div>--}}
 
 {{--<script src="{!! asset('js/app.js') !!}" charset="utf-8"></script>--}}
 <script src="{!! asset('https://js.pusher.com/4.1/pusher.min.js') !!}"></script>
@@ -109,7 +104,7 @@
 
 
     channel.bind('App\\Events\\ButtonPressEvent', function (data) {
-        alert('asdasd');
+        //alert('asdasd');
         buttonIDs.push(data.button.button_id);
         var buttons = getIDs(buttonIDs);
         //add(data.button.button_id);
@@ -142,35 +137,6 @@
         return str;
     }
 
-
-    var seconds = 0, minutes = 0, hours = 0, timeArray = [],
-        t;
-
-    function add(btnID) {
-        seconds++;
-        if (seconds >= 60) {
-            seconds = 0;
-            minutes++;
-            if (minutes >= 60) {
-                minutes = 0;
-                hours++;
-            }
-        }
-
-        if ($('#btn' + btnID).length > 0) {
-            var textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-            $('#btn' + btnID).html(btnID + ': ' + textContent);
-        } else {
-            var textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
-            $('#times').append('<button id="btn' + btnID + '" class="btn btn-primary">' + textContent + '</button>');
-        }
-
-        timer();
-    }
-
-    function timer() {
-        t = setTimeout(add, 1000);
-    }
 
 </script>
 </body>

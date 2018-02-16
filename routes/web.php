@@ -29,11 +29,12 @@ Route::name('buttonsPressed')->any('button/{id}', function ($id) {
     $button->button_id = $id;
     $button->status = 1;
     if ($button->save()) {
-        event(new ButtonPressEvent($button));
-    }
-    //return $button;
+//        return $button;
 
-})->where('id', '[0-9]+');
+        return event(new ButtonPressEvent($button));
+    }
+//    return $button;
+});
 
 Route::get('fbp', function () {
 //    event(new \App\Events\ButtonPressEvent());
