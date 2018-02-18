@@ -104,8 +104,8 @@
 
 
     channel.bind('App\\Events\\ButtonPressEvent', function (data) {
-        //alert('asdasd');
         buttonIDs.push(data.button.button_id);
+//        alert(buttonIDs.toString());
         var buttons = getIDs(buttonIDs);
         //add(data.button.button_id);
         //        var tt = timer();
