@@ -92,7 +92,7 @@
 <script type="text/javascript">
 
     Pusher.logToConsole = true;
-    var pusher = new Pusher('2f207b6d6270b9d99a3b', {
+    var pusher = new Pusher('05b2568be5bd3bc5a6b0', {
         cluster: 'ap2',
         encrypted: true
     });
