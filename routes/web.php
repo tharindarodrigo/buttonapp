@@ -31,7 +31,7 @@ Route::name('buttonsPressed')->any('button/{id}', function ($id) {
     if ($button->save()) {
 //        return $button;
 
-        return event(new ButtonPressEvent($button));
+        event(new ButtonPressEvent($button));
     }
 //    return $button;
 });
