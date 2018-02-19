@@ -29,8 +29,6 @@ Route::name('buttonsPressed')->any('button/{id}', function ($id) {
     $button->button_id = $id;
     $button->status = 1;
     if ($button->save()) {
-//        return $button;
-
         event(new ButtonPressEvent($button));
     }
 //    return $button;

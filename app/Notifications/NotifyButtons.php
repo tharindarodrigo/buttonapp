@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -43,9 +44,9 @@ class NotifyButtons extends Notification
      */
     public function toDatabase($notifiable)
     {
-        return [
+        return new BroadcastMessage( [
             'button' => $this->button
-        ];
+        ]);
 
     }
 
