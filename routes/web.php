@@ -24,12 +24,12 @@ Route::get('buttons', 'ButtonController@index');
 
 
 Route::any('button/log', function (\Illuminate\Http\Request $request){
-//    $x = Input::all();
+    $x = $request->all();
 //    return 'hello';
     $button = new \App\Button();
     $button->button_id = 100;
     $button->status = 1;
-    $button->data = \Illuminate\Support\Facades\Input::all();
+    $button->data = (String)($request->all());
 //    $button->data = empty($x) ? 'nothing' : json_encode($x);
 
     return $button->save();
