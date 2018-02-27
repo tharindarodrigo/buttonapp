@@ -39,7 +39,7 @@ Route::post('button/log', function (\Illuminate\Http\Request $request){
     $button = new \App\Button();
     $button->button_id = 100;
     $button->status = 1;
-    $button->data = json_encode($x);
+    $button->data = empty($x) ? 'nothing' : json_encode($x);
 
     $button->save();
 
