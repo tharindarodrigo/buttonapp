@@ -42,7 +42,7 @@ Route::any('button/log', function (\Illuminate\Http\Request $request){
     $button->data = 'asdasd';
 //    $button->data = empty($x) ? 'nothing' : json_encode($x);
 
-    $button->save();
+    return $button->save();
 
 
 });
