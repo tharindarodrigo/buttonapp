@@ -36,7 +36,7 @@ Route::name('buttonsPressed')->any('button/{id}', function ($id) {
 
 Route::any('button/log', function (\Illuminate\Http\Request $request){
 //    $x = Input::all();
-    $button = new \App\Button();
+    return $button = new \App\Button();
     $button->button_id = 100;
     $button->status = 1;
     $button->data = 'asdasd';
