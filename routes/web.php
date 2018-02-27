@@ -25,8 +25,8 @@ Route::get('buttons', 'ButtonController@index');
 
 Route::any('button/log', function (){
 //    $x = Input::all();
-    return 'hello';
-    return $button = new \App\Button();
+//    return 'hello';
+    $button = new \App\Button();
     $button->button_id = 100;
     $button->status = 1;
     $button->data = 'asdasd';
