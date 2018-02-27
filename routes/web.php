@@ -34,6 +34,18 @@ Route::name('buttonsPressed')->any('button/{id}', function ($id) {
 //    return $button;
 });
 
+Route::post('button/log', function (\Illuminate\Http\Request $request){
+    $x = $request->all();
+    $button = new \App\Button();
+    $button->button_id = 100;
+    $button->status = 1;
+    $button->data = json_decode($x);
+
+    $button->save();
+
+
+});
+
 Route::get('fbp', function () {
 //    event(new \App\Events\ButtonPressEvent());
 });

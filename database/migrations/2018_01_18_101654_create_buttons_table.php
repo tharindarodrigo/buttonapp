@@ -16,6 +16,7 @@ class CreateButtonsTable extends Migration
         Schema::create('buttons', function (Blueprint $table) {
             $table->increments('id');
             $table->string('button_id');
+            $table->text('data');
             $table->boolean('status')->nullable();
             $table->timestamps();
         });
