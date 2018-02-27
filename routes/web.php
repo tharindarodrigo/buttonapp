@@ -34,7 +34,7 @@ Route::name('buttonsPressed')->any('button/{id}', function ($id) {
 //    return $button;
 });
 
-Route::any('button/log', function (){
+Route::any('buttons/log', function (){
 //    $x = Input::all();
     return 'hello';
     return $button = new \App\Button();
