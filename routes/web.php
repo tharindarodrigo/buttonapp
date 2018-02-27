@@ -23,13 +23,13 @@ Route::get('triggered-buttons', 'ButtonController@getIds');
 Route::get('buttons', 'ButtonController@index');
 
 
-Route::any('button/log', function (){
+Route::any('button/log', function (\Illuminate\Http\Request $request){
 //    $x = Input::all();
 //    return 'hello';
     $button = new \App\Button();
     $button->button_id = 100;
     $button->status = 1;
-    $button->data = 'asdasd';
+    $button->data = json_encode($request);
 //    $button->data = empty($x) ? 'nothing' : json_encode($x);
 
     return $button->save();
