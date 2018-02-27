@@ -22,19 +22,8 @@ Route::get('triggered-buttons', 'ButtonController@getIds');
 
 Route::get('buttons', 'ButtonController@index');
 
-Route::name('buttonsPressed')->any('button/{id}', function ($id) {
 
-
-    $button = new \App\Button();
-    $button->button_id = $id;
-    $button->status = 1;
-    if ($button->save()) {
-        event(new ButtonPressEvent($button));
-    }
-//    return $button;
-});
-
-Route::any('buttons/log', function (){
+Route::any('button/log', function (){
 //    $x = Input::all();
     return 'hello';
     return $button = new \App\Button();
@@ -47,6 +36,21 @@ Route::any('buttons/log', function (){
 
 
 });
+
+
+Route::name('buttonsPressed')->any('button/{id}', function ($id) {
+
+
+    $button = new \App\Button();
+    $button->button_id = $id;
+    $button->status = 1;
+    if ($button->save()) {
+        event(new ButtonPressEvent($button));
+    }
+//    return $button;
+});
+
+
 
 Route::get('fbp', function () {
 //    event(new \App\Events\ButtonPressEvent());
