@@ -17,9 +17,9 @@ class ButtonController extends Controller
 
         return Button::all();
 
-        $x = Button::where('status',1)->pluck('button_id');
+//        $x = Button::where('status',1)->pluck('button_id');
 //$x = Button::select('button_id');
-        return response()->json($x, 200);
+//        return response()->json($x, 200);
     }
 
     public function getIds()
