@@ -15,6 +15,8 @@ class ButtonController extends Controller
     public function index()
     {
 
+        return Button::all();
+
         $x = Button::where('status',1)->pluck('button_id');
 //$x = Button::select('button_id');
         return response()->json($x, 200);
